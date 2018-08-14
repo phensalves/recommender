@@ -135,4 +135,3 @@ def getRecomendacoes(base, user):
 	rankings.sort()
 	rankings.reverse()
 	return rankings
-
