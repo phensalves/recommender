@@ -44,7 +44,7 @@ class Recommendations(object):
     pSum=sum([prefs[p1][it]*prefs[p2][it] for it in si])
 
     # Calculate Pearson score
-  	num=pSum−(sum1*sum2/n)
+    num=pSum−(sum1*sum2/n)
     den=sqrt((sum1Sq−pow(sum1,2)/n)*(sum2Sq−pow(sum2,2)/n))
     if den==0: return 0
     r=num/den
@@ -140,23 +140,23 @@ class Recommendations(object):
 
   # # Method from Udemy class
   # def getRecomendacoes(base, user):
-  # 	total={}
-  # 	similaritySum={}
+  #   total={}
+  #   similaritySum={}
 
-  # 	for other in base:
-  # 		if other == user: continue
-  # 		similarity =  (base, user, other)
+  #   for other in base:
+  #     if other == user: continue
+  #     similarity =  (base, user, other)
 
-  # 		if similarity <= 0: continue
+  #     if similarity <= 0: continue
 
-  # 		for item in base[other]:
-  # 			if item not in base[user]:
-  # 				total.setdefault(item, 0)
-  # 				total[item] += bae[outro][item] * similarity
-  # 				similaritySum.setdefault(item, 0)
-  # 				similaritySum[item] += similarity
+  #     for item in base[other]:
+  #       if item not in base[user]:
+  #         total.setdefault(item, 0)
+  #         total[item] += bae[outro][item] * similarity
+  #         similaritySum.setdefault(item, 0)
+  #         similaritySum[item] += similarity
 
-  # 	rankings=[(total / similaritySum[item], item) for item, total in total.items()]
-  # 	rankings.sort()
-  # 	rankings.reverse()
-  # 	return rankings
+  #   rankings=[(total / similaritySum[item], item) for item, total in total.items()]
+  #   rankings.sort()
+  #   rankings.reverse()
+  #   return rankings
