@@ -55,7 +55,7 @@ class Recommendations(object):
   # Gets recommendations for a person by using a weighted average
   # of every other user's rankings
   def getRecommendations(prefs,person,similarity=sim_pearson):
-    totals={}
+    total={}
     simSums={}
     for other in prefs:
       # don't compare me to myself
@@ -69,17 +69,50 @@ class Recommendations(object):
         # only score movies I haven't seen yet
         if item not in prefs[person] or prefs[person][item]==0:
           # Similarity * Score
-          totals.setdefault(item,0)totals[item]+=prefs[other][item]*sim
+          total.setdefault(item,0)total[item]+=prefs[other][item]*sim
           # Sum of similarities
           simSums.setdefault(item,0)
           simSums[item]+=sim
 
     # Create the normalized list
-    rankings=[(total/simSums[item],item) for item,total in totals.items(  )]
+    rankings=[(total/simSums[item],item) for item,total in total.items(  )]
 
     # Return the sorted list
     rankings.sort(  )
     rankings.reverse(  )
+    return rankings
+
+  def euclidian(user1, user2):
+    si = {}
+    for item in base[user1]:
+      if item in base[user2]: si[item] = 1
+
+    if len(si) == 0: return 0
+
+    soma = sum([pow(base[user1][item] - base[user2][item], 2)
+                for item in base[user1] if item in base[user2]])
+
+    return 1/(1 + sqrt(soma))
+
+  def getEuclidianRecommendations(user)
+    totals={}
+    simSum={}
+    for other in prefs:
+      if other == user: continue
+      similarity = euclidian(user, other)
+
+      if similarityv <= 0: continue
+
+      for item in prefs[other]:
+        if item not in prefs[user]:
+          totals.setdefault(item, 0)
+          totals[item] += prefs[other][item] * similarity
+          simSum.setdefault(item, 0)
+          simSum[item] += similarity
+
+    rankings = [(totals / simSum[item], item) for item, total in totals.items()]
+    rankings.sort()
+    rankings.reverse()
     return rankings
 
 
