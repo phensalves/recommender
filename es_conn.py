@@ -12,9 +12,9 @@ class ConnectEs(object):
 		print args
 		init_conn(index, doc_type, es_id)
 
-	def init_conn(index, doc_type, es_id):
-		es.get(index=index, doc_type=doc_type, id=es_id)['_source']
-		print es['interests_id']
+	def init_conn(index, es_id):
+		es.get(index=index, doc_type=index, id=es_id)['_source']
+		es['interests_id']
 
 
 # example
