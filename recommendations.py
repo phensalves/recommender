@@ -25,23 +25,36 @@ class Recommendations(object):
     if number_of_elements==0: return 0
 
     # Add up all the preferences
-    sum1=sum([preferences[first_person][it] for it in mutual_items])
-    sum2=sum([preferences[second_person][it] for it in mutual_items])
+    sum1 = sum([preferences[first_person][it] for it in mutual_items])
+    sum2 = sum([preferences[second_person][it] for it in mutual_items])
 
     # Sum up the squares
-    sum1Sq=sum([pow(preferences[first_person][it],2) for it in mutual_items])
-    sum2Sq=sum([pow(preferences[second_person][it],2) for it in mutual_items])
+    sum1Sq = sum([pow(preferences[first_person][it],2) for it in mutual_items])
+    sum2Sq = sum([pow(preferences[second_person][it],2) for it in mutual_items])
 
     # Sum up the products
-    pSum=sum([preferences[first_person][it]*preferences[second_person][it] for it in mutual_items])
+    pSum = sum([preferences[first_person][it]*preferences[second_person][it] for it in mutual_items])
 
     # Calculate Pearson score
-    # num=pSum−(sum1*sum2/number_of_elements)
-    # den=sqrt((sum1Sq−pow(sum1,2)/n)*(sum2Sq−pow(sum2,2)/number_of_elements))
+    num = pSum − sum1 * sum2 / number_of_elements
+    den = sqrt((sum1Sq−pow(sum1,2)/n) * (sum2Sq−pow(sum2,2) / number_of_elements))
+    
     if den==0: return 0
     r=num/den
 
     return r
+
+  def topMatches(prefs, person, n=5, similarity=sim_pearson):
+      '''
+      Returns the best matches for person from the prefs dictionary. 
+      Number of results and similarity function are optional params.
+      '''
+
+      scores = [(similarity(prefs, person, other), other) for other in prefs
+                if other != person]
+      scores.sort()
+      scores.reverse()
+      return scores[0:n]
 
 
   # Gets recommendations for a person by using a weighted average
@@ -61,7 +74,7 @@ class Recommendations(object):
         # only score movies I haven't seen yet
         if item not in preferences[person] or preferences[person][item]==0:
           # Similarity * Score
-          # total.setdefault(item,0)total[item]+=preferences[other][item]*sim
+          total.setdefault(item,0)total[item]+=preferences[other][item]*sim
           # Sum of similarities
           similarSums.setdefault(item,0)
           similarSums[item]+=sim
@@ -72,4 +85,29 @@ class Recommendations(object):
     # Return the sorted list
     rankings.sort(  )
     rankings.reverse(  )
+    return rankings
+
+  def getRecommendedItems(prefs, itemMatch, user):
+    userRatings = prefs[user]
+    scores = {}
+    totalSim = {}
+    # Loop over items rated by this user
+    for (item, rating) in userRatings.items():
+        # Loop over items similar to this one
+        for (similarity, item2) in itemMatch[item]:
+            # Ignore if this user has already rated this item
+            if item2 in userRatings:
+                continue
+            # Weighted sum of rating times similarity
+            scores.setdefault(item2, 0)
+            scores[item2] += similarity * rating
+            # Sum of all the similarities
+            totalSim.setdefault(item2, 0)
+            totalSim[item2] += similarity
+    # Divide each total score by total weighting to get an average
+    rankings = [(score / totalSim[item], item) for (item, score) in
+                scores.items()]
+    # Return the rankings from highest to lowest
+    rankings.sort()
+    rankings.reverse()
     return rankings
