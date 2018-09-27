@@ -1,21 +1,13 @@
-#!/usr/bin/python
-#encoding: UTF-8
-
-from datetime import datetime
-from elasticsearch import Elasticsearch
-import code
-es = Elasticsearch()
-
-class ConnectEs(object):
-	"""docstring for ConnectES"""
-	def __init__(*args):
-		print args
-		init_conn(index, doc_type, es_id)
-
-	def init_conn(index, es_id):
-		es.get(index=index, doc_type=index, id=es_id)['_source']
-		es['interests_id']
+from elasticsearch import Elasticsearch as es
 
 
-# example
-# es.get(index="user_preferences", doc_type="user_preferences", id=39038)['_source']
+class ConnectEs():
+    def __init__(self, index_name, user_id):
+        print 'teeeeeest'
+        init_conn(ConnectEs, index_name, user_id)
+
+
+def init_conn(cls, index_name, user_id):
+    print 'entrou no init_conn'
+    result = es().get(index=index_name, doc_type=index_name, id=user_id)
+    if result > 0: print result 
