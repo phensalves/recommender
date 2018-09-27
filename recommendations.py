@@ -1,6 +1,3 @@
-# !/usr/bin/python
-# encoding: UTF-8
-
 from math import sqrt
 
 from es_conn import ConnectEs
@@ -9,7 +6,7 @@ from es_conn import ConnectEs
 class Recommendations:
 
     def load_es_data(self, user_id):
-        es_connection = ConnectEs('user_preferences', user_id)
+        es_connection = ConnectEs().init_conn('user_preferences', user_id)
 
         print 'es_connection'
 
