@@ -1,14 +1,14 @@
 from math import sqrt
 
-from es_conn import ConnectEs
+from pdh_elasticsearch import PdhElasticsearch
 
 
 class Recommendations:
-
+    @classmethod
     def load_es_data(self, user_id):
-        es_connection = ConnectEs().init_conn('user_preferences', user_id)
-
-        print 'es_connection'
+        user_preferences = PdhElasticsearch().init_conn('user_preferences', user_id)
+        if user_preferences is not None:
+            print user_preferences
 
     # Returns the Pearson correlation coefficient for first_person and second_person
     def sim_pearson(preferences, first_person, second_person):
