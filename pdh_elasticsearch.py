@@ -1,4 +1,3 @@
-from datetime import datetime
 from elasticsearch import Elasticsearch as es
 
 
@@ -10,8 +9,8 @@ class PdhElasticsearch():
         if result is not None:
             return result['_source']
 
-    def get_similar_users(self, user_preferences):
-        res = es.search(index="test-index", body={"query": {
+    def get_similar_users(self, index, user_preferences):
+        res = es.search(index=index, body={"query": {
             "function_score": {
                 "boost_mode": "replace",
                 "query": {"match_all": {}},
@@ -41,3 +40,7 @@ class PdhElasticsearch():
                 }
             }
         })
+
+        print("Got %d Hits:" % res['hits']['total'])
+        for hit in res['hits']['hits']:
+            print(hit["_source"])
