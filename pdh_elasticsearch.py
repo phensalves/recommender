@@ -1,6 +1,7 @@
 # coding=utf-8
 from elasticsearch import Elasticsearch as es
 from elasticsearch_dsl import Search as s
+import numpy as np
 
 
 class PdhElasticsearch():
@@ -12,14 +13,15 @@ class PdhElasticsearch():
             return result['_source']
 
     def get_similar_users(self, index, user_preferences, lat, lng):
-        preferences = 
         res = client.search(index="user_preferences", body={
             "query": {
                 "function_score": {
                     "boost_mode": "replace",
                     "query": {"match_all": {}},
                     "script_score": {
-                        "script": " _source['interests_ids_array'].containsAll( [19, 20, 21, 22] ) ? 2.3: 0"
+                        "script": " _source['interests_ids_array'].containsAll(" + str([19, 20, 21, 22]) + ") ? "
+                                                                                                      "2.3: "
+                                                                                                      "0 "
                     }
                 }
             }
