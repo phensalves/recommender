@@ -12,22 +12,28 @@ class PdhElasticsearch():
         if result is not None:
             return result['_source']
 
-    def get_similar_users(self, index, user_preferences, lat, lng):
+    def get_similar_users(self, index, user_preferences):
+        client = Elasticsearch()
+        s = Search().
         res = client.search(index="user_preferences", body={
             "query": {
                 "function_score": {
                     "boost_mode": "replace",
-                    "query": {"match_all": {}},
+                    "query": {
+                        "match_all": {}
+                    },
                     "script_score": {
-                        "script": " _source['interests_ids_array'].containsAll(" + str([19, 20, 21, 22]) + ") ? "
-                                                                                                      "2.3: "
-                                                                                                      "0 "
+                        "script": "_source['interests_ids'].containsAll(" + str([21,22]) + ") ? 1 : 0"
                     }
                 }
+            },
+            "filter": {
+                "terms": {
+                    "interests_ids": [21,22]
+                }
             }
-
         })
 
-    print("Got %d Hits:" % res['hits']['total'])
-    for hit in res['hits']['hits']:
-        print(hit["_source"])
+        print("Got %d Hits:" % res['hits']['total'])
+        for hit in res['hits']['hits']:
+            print(hit["_source"])
