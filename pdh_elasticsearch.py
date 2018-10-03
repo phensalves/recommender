@@ -31,6 +31,7 @@ class PdhElasticsearch():
                     }
                 }
             },
+            "size": 200000,
             "filter": {
                 "terms": {
                     "interests_ids": [21, 22]
