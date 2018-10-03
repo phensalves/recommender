@@ -6,8 +6,8 @@ from elasticsearch_dsl import Search
 
 class PdhElasticsearch():
     @classmethod
-    def init_conn(self, index_name, user_id):
-        result = es().get(index=index_name, doc_type=index_name, id=user_id)
+    def init_conn(cls, index_name, user_id):
+        result = Elasticsearch().get(index=index_name, doc_type=index_name, id=user_id)
 
         if result is not None:
             return result['_source']
@@ -17,27 +17,9 @@ class PdhElasticsearch():
         url = 'http://localhost:9200'
         client = Elasticsearch(url)
         s = Search(using=client)
-        s = s.index('user_preferences')
+        s = s.index(index)
 
-        body = {
-            "query": {
-                "function_score": {
-                    "boost_mode": "replace",
-                    "query": {
-                        "match_all": {}
-                    },
-                    "script_score": {
-                        "script": "_source['interests_ids'].containsAll(" + str([21, 22]) + ") ? 1 : 0"
-                    }
-                }
-            },
-            "size": 200000,
-            "filter": {
-                "terms": {
-                    "interests_ids": [21, 22]
-                }
-            }
-        }
+        body = self.build_query_body(user_preferences)
 
         body = s.to_dict()
 
@@ -46,3 +28,26 @@ class PdhElasticsearch():
         print("Got %d Hits:" % res['hits']['total'])
         for hit in res['hits']['hits']:
             print(hit["_source"])
+    
+    def build_query_body(self, list):
+        body = {
+            "query": {
+                "function_score": {
+                    "boost_mode": "replace",
+                    "query": {
+                        "match_all": {}
+                    },
+                    "script_score": {
+                        "script": "_source['interests_ids'].containsAll(" + str(list) + ") ? 1 : 0"
+                    }
+                }
+            },
+            "size": 200000,
+            "filter": {
+                "terms": {
+                    "interests_ids": list
+                }
+            }
+        }
+
+        return body
