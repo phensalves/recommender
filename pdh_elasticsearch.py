@@ -3,6 +3,7 @@ from elasticsearch import Elasticsearch
 from elasticsearch_dsl import connections
 from elasticsearch_dsl import Search
 
+
 class PdhElasticsearch():
     @classmethod
     def init_conn(self, index_name, user_id):
@@ -17,7 +18,6 @@ class PdhElasticsearch():
         client = Elasticsearch(url)
         s = Search(using=client)
         s = s.index('user_preferences')
-        s = s.filter("terms", interests_ids=[21, 22])
 
         body = {
             "query": {
