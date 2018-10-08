@@ -6,7 +6,7 @@ from pdh_elasticsearch import PdhElasticsearch
 class Recommendations:
     @classmethod
     def load_es_data(self, user_id):
-        user_preferences = PdhElasticsearch().init_conn('user_preferences', user_id)
+        user_preferences = init_conn('user_preferences', user_id)
         if user_preferences is not None:
             print(user_preferences)
 

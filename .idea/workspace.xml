@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f231185-54d3-44e7-a63d-2fd799eb7e76" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pdh_elasticsearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/pdh_elasticsearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommendations.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommendations.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,37 +16,38 @@
     <session id="-1179661308">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="1964" />
+          <entry key="Python Console" value="2222" />
           <entry key="dummy" value="13" />
           <entry key="elasticsearch" value="3" />
           <entry key="pdh_elasticsearch" value="2" />
-          <entry key="py" value="1480" />
+          <entry key="py" value="2199" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="18" />
-          <entry key="Python" value="3435" />
+          <entry key="Python" value="4412" />
           <entry key="Scratch" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="9" />
+          <entry key="py" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="8" />
+          <entry key="Python" value="11" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
@@ -87,23 +90,37 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pdh_elasticsearch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+            <state relative-caret-position="345">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="e#15#54#0" expanded="true" />
+                <marker date="1539033162252" expanded="true" signature="212:443" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Python/2.7/site-packages/elasticsearch/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file:///Library/Python/2.7/site-packages/elasticsearch_dsl/connections.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1674">
-              <caret line="93" selection-start-line="93" selection-end-line="93" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-7">
+              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Python/2.7/site-packages/elasticsearch/client/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="62" column="6" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -111,15 +128,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recommendations.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state>
               <caret line="10" column="17" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="17" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1538484315656" expanded="true" signature="111:112" ph="..." />
-                <marker date="1538484315656" expanded="true" signature="148:149" ph="..." />
-                <marker date="1538484315656" expanded="true" signature="459:460" ph="..." />
-                <marker date="1538484315656" expanded="true" signature="2237:2238" ph="..." />
-                <marker date="1538484315656" expanded="true" signature="3281:3282" ph="..." />
+                <marker date="1539018010646" expanded="true" signature="111:112" ph="..." />
+                <marker date="1539018010646" expanded="true" signature="148:149" ph="..." />
+                <marker date="1539018010646" expanded="true" signature="440:441" ph="..." />
+                <marker date="1539018010646" expanded="true" signature="2218:2219" ph="..." />
+                <marker date="1539018010646" expanded="true" signature="3262:3263" ph="..." />
               </folding>
             </state>
           </provider>
@@ -186,7 +203,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="CodeInsightConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -230,7 +247,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4993895" weight="0.32959184" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.501221" side_tool="true" weight="0.41836736" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.498779" visible="true" weight="0.1744898" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.498779" visible="true" weight="0.4367347" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32959184" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -274,35 +291,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/recommendations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state>
           <caret line="10" column="17" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="17" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1538484315656" expanded="true" signature="111:112" ph="..." />
-            <marker date="1538484315656" expanded="true" signature="148:149" ph="..." />
-            <marker date="1538484315656" expanded="true" signature="459:460" ph="..." />
-            <marker date="1538484315656" expanded="true" signature="2237:2238" ph="..." />
-            <marker date="1538484315656" expanded="true" signature="3281:3282" ph="..." />
+            <marker date="1539018010646" expanded="true" signature="111:112" ph="..." />
+            <marker date="1539018010646" expanded="true" signature="148:149" ph="..." />
+            <marker date="1539018010646" expanded="true" signature="440:441" ph="..." />
+            <marker date="1539018010646" expanded="true" signature="2218:2219" ph="..." />
+            <marker date="1539018010646" expanded="true" signature="3262:3263" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/elasticsearch/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7" />
+      </provider>
+    </entry>
     <entry file="file:///Library/Python/2.7/site-packages/elasticsearch_dsl/connections.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1674">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-7">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/elasticsearch/client/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="62" column="6" selection-start-line="62" selection-start-column="6" selection-end-line="62" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/elasticsearch_dsl/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="134" column="8" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pdh_elasticsearch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="e#15#54#0" expanded="true" />
+            <marker date="1539033162252" expanded="true" signature="212:443" ph="..." />
           </folding>
         </state>
       </provider>

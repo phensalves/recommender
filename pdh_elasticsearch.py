@@ -4,15 +4,16 @@ from elasticsearch_dsl import connections
 from elasticsearch_dsl import Search
 
 
-class PdhElasticsearch():
-    @classmethod
-    def init_conn(cls, index_name, user_id):
-        result = Elasticsearch().get(index=index_name, doc_type=index_name, id=user_id)
+class PdhElasticsearch(object):
+    def __init__(self, index_name, user_id):
+        self.index_name = index_name
+        self.user_id = user_id
 
-        if result is not None:
-            return result['_source']
+        current_user = self.init_conn(index_name, user_id)
+        if current_user is not None: self.get_similar_users(index_name, current_user['interests_id'])
 
     def get_similar_users(self, index, user_preferences):
+        print user_preferences
         connections.create_connection(hosts=['localhost:9200'])
         url = 'http://localhost:9200'
         client = Elasticsearch(url)
@@ -27,8 +28,8 @@ class PdhElasticsearch():
 
         print("Got %d Hits:" % res['hits']['total'])
         for hit in res['hits']['hits']:
-            print(hit["_source"])
-    
+            print(hit['_source'])
+
     def build_query_body(self, list):
         body = {
             "query": {
@@ -51,3 +52,10 @@ class PdhElasticsearch():
         }
 
         return body
+
+    def init_conn(self, index_name, user_id):
+        index_name = index_name
+        user_id = user_id
+        result = Elasticsearch().get(index=index_name, doc_type=index_name, id=user_id)
+
+        if result is not None: return result['_source']
