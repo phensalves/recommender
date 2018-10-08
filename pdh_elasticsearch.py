@@ -10,20 +10,16 @@ class PdhElasticsearch(object):
         self.user_id = user_id
 
         current_user = self.init_conn(index_name, user_id)
-        if current_user is not None: self.get_similar_users(index_name, current_user['interests_id'])
+        if current_user is not None: self.get_similar_users(index_name, current_user['interests'])
 
     def get_similar_users(self, index, user_preferences):
         print user_preferences
+
         connections.create_connection(hosts=['localhost:9200'])
         url = 'http://localhost:9200'
         client = Elasticsearch(url)
-        s = Search(using=client)
-        s = s.index(index)
-
         body = self.build_query_body(user_preferences)
-
-        body = s.to_dict()
-
+        s = Search(using=client).index(index).from_dict(body)
         res = s.execute()
 
         print("Got %d Hits:" % res['hits']['total'])
@@ -31,6 +27,8 @@ class PdhElasticsearch(object):
             print(hit['_source'])
 
     def build_query_body(self, list):
+        print "THIS IS LIST %s" % list
+        print "THIS IS LIST AS STRING %s" % str(list)
         body = {
             "query": {
                 "function_score": {
