@@ -9,11 +9,11 @@ class PdhElasticsearch(object):
         self.index_name = index_name
         self.user_id = user_id
 
-        current_user = self.init_conn(index_name, user_id)
+        current_user = self.get_user_preferences(index_name, user_id)
         if current_user is not None: self.get_similar_users(index_name, current_user['interests'])
 
     def get_similar_users(self, index, user_preferences):
-        print user_preferences
+        print(user_preferences)
 
         connections.create_connection(hosts=['localhost:9200'])
         url = 'http://localhost:9200'
@@ -37,21 +37,21 @@ class PdhElasticsearch(object):
                         "match_all": {}
                     },
                     "script_score": {
-                        "script": "_source['interests_ids'].containsAll(" + str(list) + ") ? 1 : 0"
+                        "script": "_source['interests'].containsAll(" + str([30]) + ") ? 1 : 0"
                     }
                 }
             },
             "size": 200000,
             "filter": {
                 "terms": {
-                    "interests_ids": list
+                    "interests_ids": [30]
                 }
             }
         }
 
         return body
 
-    def init_conn(self, index_name, user_id):
+    def get_user_preferences(self, index_name, user_id):
         index_name = index_name
         user_id = user_id
         result = Elasticsearch().get(index=index_name, doc_type=index_name, id=user_id)
