@@ -15,28 +15,29 @@
     <session id="-1179661308">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="3100" />
+          <entry key="Python Console" value="3294" />
           <entry key="dummy" value="13" />
           <entry key="elasticsearch" value="3" />
           <entry key="pdh_elasticsearch" value="2" />
-          <entry key="py" value="2325" />
+          <entry key="py" value="2332" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="18" />
-          <entry key="Python" value="5416" />
+          <entry key="Python" value="5617" />
           <entry key="Scratch" value="9" />
         </counts>
       </usages-collector>
@@ -91,11 +92,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pdh_elasticsearch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="17" column="63" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="63" />
+            <state relative-caret-position="524">
+              <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
               <folding>
                 <element signature="e#15#54#0" expanded="true" />
-                <marker date="1539894482133" expanded="true" signature="212:451" ph="..." />
+                <marker date="1539964507291" expanded="true" signature="212:451" ph="..." />
               </folding>
             </state>
           </provider>
@@ -232,7 +233,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.20695971" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -298,11 +298,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pdh_elasticsearch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="17" column="63" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="63" />
+        <state relative-caret-position="524">
+          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
           <folding>
             <element signature="e#15#54#0" expanded="true" />
-            <marker date="1539894482133" expanded="true" signature="212:451" ph="..." />
+            <marker date="1539964507291" expanded="true" signature="212:451" ph="..." />
           </folding>
         </state>
       </provider>

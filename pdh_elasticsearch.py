@@ -16,8 +16,7 @@ class PdhElasticsearch(object):
         print(user_preferences)
 
         connections.create_connection(hosts=['localhost:9200'])
-        url = 'http://localhost:9200'
-        client = Elasticsearch(url)
+        client = Elasticsearch()
         body = self.build_query_body(user_preferences)
         s = Search(using=client).index(index).from_dict(body)
         res = s.execute()
@@ -30,23 +29,24 @@ class PdhElasticsearch(object):
         print "THIS IS LIST %s" % list
         print "THIS IS LIST AS STRING %s" % str(list)
         body = {
-            "query": {
-                "function_score": {
-                    "boost_mode": "replace",
-                    "query": {
-                        "match_all": {}
-                    },
-                    "script_score": {
-                        "script": "_source['interests'].containsAll(" + str([30]) + ") ? 1 : 0"
-                    }
-                }
-            },
-            "size": 200000,
-            "filter": {
-                "terms": {
-                    "interests_ids": [30]
-                }
+          "query": {
+            "function_score": {
+              "boost_mode": "replace",
+              "query": {
+                "match_all": {}
+              },
+              "script_score": {
+                "script": "_source['interests'].containsAll([22]) ? 1 : 0"
+              }
             }
+          },
+          "filter": {
+            "terms": {
+              "interests": [
+                22
+              ]
+            }
+          }
         }
 
         return body
