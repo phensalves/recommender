@@ -31,13 +31,13 @@
           <entry key="dummy" value="13" />
           <entry key="elasticsearch" value="3" />
           <entry key="pdh_elasticsearch" value="2" />
-          <entry key="py" value="2332" />
+          <entry key="py" value="2346" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="18" />
-          <entry key="Python" value="5617" />
+          <entry key="Python" value="5631" />
           <entry key="Scratch" value="9" />
         </counts>
       </usages-collector>
@@ -92,11 +92,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pdh_elasticsearch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+            <state relative-caret-position="462">
+              <caret line="38" column="81" lean-forward="true" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="81" />
               <folding>
                 <element signature="e#15#54#0" expanded="true" />
-                <marker date="1539964507291" expanded="true" signature="212:451" ph="..." />
+                <marker date="1539972204748" expanded="true" signature="212:451" ph="..." />
               </folding>
             </state>
           </provider>
@@ -233,6 +233,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.20695971" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -298,11 +299,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pdh_elasticsearch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+        <state relative-caret-position="462">
+          <caret line="38" column="81" lean-forward="true" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="81" />
           <folding>
             <element signature="e#15#54#0" expanded="true" />
-            <marker date="1539964507291" expanded="true" signature="212:451" ph="..." />
+            <marker date="1539972204748" expanded="true" signature="212:451" ph="..." />
           </folding>
         </state>
       </provider>

@@ -36,15 +36,13 @@ class PdhElasticsearch(object):
                 "match_all": {}
               },
               "script_score": {
-                "script": "_source['interests'].containsAll([22]) ? 1 : 0"
+                "script": "_source['interests'].containsAll(%s) ? 1 : 0" % (list)
               }
             }
           },
           "filter": {
             "terms": {
-              "interests": [
-                22
-              ]
+              "interests": "%s" % (list)
             }
           }
         }
