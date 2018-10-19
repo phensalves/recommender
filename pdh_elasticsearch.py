@@ -27,7 +27,7 @@ class PdhElasticsearch(object):
 
     def build_query_body(self, list):
         print "THIS IS LIST %s" % list
-        print "THIS IS LIST AS STRING %s" % str(list)
+
         body = {
           "query": {
             "function_score": {
