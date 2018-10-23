@@ -1,14 +1,18 @@
 from math import sqrt
-
-from pdh_elasticsearch import PdhElasticsearch
+from pdh_elasticsearch import PdhElasticsearch as conn
 
 
 class Recommendations:
-    @classmethod
-    def load_es_data(self, user_id):
-        user_preferences = init_conn('user_preferences', user_id)
-        if user_preferences is not None:
-            print(user_preferences)
+    def __init__(self, index, user_id):
+        self.index = index
+        self.user_id = user_id
+
+        self.load_es_data(index, user_id)
+
+    def load_es_data(self, index, user_id):
+        common_user_preferences = conn(index, user_id)
+        if common_user_preferences is not None:
+            return common_user_preferences
 
     # Returns the Pearson correlation coefficient for first_person and second_person
     def sim_pearson(preferences, first_person, second_person):
