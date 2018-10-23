@@ -35,14 +35,12 @@ class PdhElasticsearch(object):
               "query": {
                 "match_all": {}
               },
-              "script_score": {
-                "script": "_source['interests'].containsAll(%s) ? 1 : 0" % (list)
-              }
+              "script_score": dict(script="_source['interests'].containsAll(" + str(list) + ") ? 1 : 0")
             }
           },
           "filter": {
             "terms": {
-              "interests": "%s" % (list)
+              "interests": list
             }
           }
         }
