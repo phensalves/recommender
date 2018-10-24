@@ -1,4 +1,3 @@
-# coding=utf-8
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import connections, Search
 
