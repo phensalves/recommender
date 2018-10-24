@@ -8,8 +8,8 @@ class PdhElasticsearch(object):
         self.index_name = index_name
         self.user_id = user_id
 
-        current_user = self.get_user_preferences(index_name, user_id)
-        if current_user is not None: self.get_similar_users(index_name, current_user['interests'])
+        # current_user = self.get_user_preferences(index_name, user_id)
+        # if current_user is not None: self.get_similar_users(index_name, current_user['interests'])
 
     def get_similar_users(self, index, user_preferences):
         connections.create_connection(hosts=['localhost:9200'])
@@ -18,10 +18,10 @@ class PdhElasticsearch(object):
         s = Search(using=client).index(index).from_dict(body)
         res = s.execute()
 
-        print("Got %d Hits:" % res['hits']['total'])
+        print("Got %d Hits" % res['hits']['total'])
         for hit in res['hits']['hits']:
             print(hit['_source'])
-        if res is not None: return res
+        if res is not None: return res['hits']['hits']
 
     def build_query_body(self, list):
         body = {
