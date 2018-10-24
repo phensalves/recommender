@@ -45,6 +45,8 @@ class PdhElasticsearch(object):
         if result is not None: return result['_source']
 
     def user_quality_ratings(self, user_id):
-        result = self.get_elasticsearch_single_data('user_quality_ratings', user_id)
-
-        if result is not None: return result['_source']
+        try:
+            result = self.get_elasticsearch_single_data('user_quality_ratings', user_id)
+            return result['_source']
+        except TransportError:
+            return None
