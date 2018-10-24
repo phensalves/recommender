@@ -2,17 +2,18 @@ from math import sqrt
 from pdh_elasticsearch import PdhElasticsearch as conn
 
 
-class Recommendations:
+class Recommendations(object):
     def __init__(self, index, user_id):
         self.index = index
         self.user_id = user_id
 
-        self.load_es_data(index, user_id)
-
-    def load_es_data(self, index, user_id):
-        common_user_preferences = conn(index, user_id)
-        if common_user_preferences is not None:
-            return common_user_preferences
+    def load_es_data(self, index_name, user_id):
+        es_conn = conn(index_name, user_id)
+        user_preferences = es_conn.get_user_preferences(index_name, user_id)
+        common_users = es_conn.get_similar_users('user_preferences', user_preferences['interests'])
+        if common_users is not None:
+            for user in common_users:
+                print(user)
 
     # Returns the Pearson correlation coefficient for first_person and second_person
     def sim_pearson(preferences, first_person, second_person):
