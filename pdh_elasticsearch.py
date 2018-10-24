@@ -8,9 +8,6 @@ class PdhElasticsearch(object):
         self.index_name = index_name
         self.user_id = user_id
 
-        # current_user = self.get_user_preferences(index_name, user_id)
-        # if current_user is not None: self.get_similar_users(index_name, current_user['interests'])
-
     def get_similar_users(self, index, user_preferences):
         connections.create_connection(hosts=['localhost:9200'])
         client = Elasticsearch()
@@ -42,9 +39,12 @@ class PdhElasticsearch(object):
         }
         return body
 
-    def get_user_preferences(self, index_name, user_id):
-        index_name = index_name
-        user_id = user_id
+    def get_elasticsearch_single_data(self, index_name, user_id):
         result = Elasticsearch().get(index=index_name, doc_type=index_name, id=user_id)
+
+        if result is not None: return result['_source']
+
+    def user_quality_ratings(self, user_id):
+        result = self.get_elasticsearch_single_data('user_quality_ratings', user_id)
 
         if result is not None: return result['_source']
