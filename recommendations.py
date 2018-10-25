@@ -7,13 +7,22 @@ class Recommendations(object):
         self.index = index
         self.user_id = user_id
 
-    def load_es_data(self, index_name, user_id):
+    def load_common_users(self, index_name, user_id):
         es_conn = conn(index_name, user_id)
-        user_preferences = es_conn.get_user_preferences(index_name, user_id)
+        user_preferences = es_conn.get_elasticsearch_single_data(index_name, user_id)
         common_users = es_conn.get_similar_users('user_preferences', user_preferences['interests'])
         if common_users is not None:
             for user in common_users:
                 print(user)
+
+    def load_common_users_quality_rating(self, user_id):
+        es_conn = conn('user_quality_ratings', user_id)
+        current_user_quality_ratings = es_conn.user_quality_ratings(user_id)
+        common_users_quality_ratings = es_conn.get_similar_users('user_quality_ratings', current_user_quality_ratings)
+
+        if common_users_quality_ratings is not None:
+            for rating in common_users_quality_ratings:
+                print rating
 
     # Returns the Pearson correlation coefficient for first_person and second_person
     def sim_pearson(preferences, first_person, second_person):

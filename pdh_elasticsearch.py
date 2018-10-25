@@ -1,4 +1,4 @@
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, TransportError
 from elasticsearch_dsl import connections, Search
 
 
@@ -46,6 +46,6 @@ class PdhElasticsearch(object):
     def user_quality_ratings(self, user_id):
         try:
             result = self.get_elasticsearch_single_data('user_quality_ratings', user_id)
-            return result['_source']
+            return result['bars_high_rated']
         except TransportError:
             return None
