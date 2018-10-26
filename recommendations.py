@@ -12,8 +12,12 @@ class Recommendations(object):
         user_preferences = es_conn.get_elasticsearch_single_data(index_name, user_id)
         common_users = es_conn.get_similar_users('user_preferences', user_preferences['interests'])
         if common_users is not None:
+            similars = []
             for user in common_users:
-                print(user)
+                opts = {'id': user['_source']['id'], 'interests_ids': user['_source']['interests']}
+                similars.append(opts)
+        print("Similars size is: %s") % len(similars)
+        return similars
 
     def load_common_users_quality_rating(self, user_id):
         es_conn = conn('user_quality_ratings', user_id)
@@ -124,3 +128,20 @@ class Recommendations(object):
         rankings.sort()
         rankings.reverse()
         return rankings
+
+    # Returns a distance-based similarity score for person1 and person2
+    def sim_distance(prefs, person1, person2):
+        # Get the list of shared_items
+        si = {}
+        for item in prefs[person1]:
+            if item in prefs[person2]:
+                si[item] = 1
+
+        # if they have no ratings in common, return 0
+        if len(si) == 0: return 0
+
+        # Add up the squares of all the differences
+        sum_of_squares = sum([pow(prefs[person1][item] - prefs[person2][item], 2)
+                              for item in si])
+
+        return 1 / (1 + sqrt(sum_of_squares))
