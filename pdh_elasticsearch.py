@@ -12,7 +12,8 @@ class PdhElasticsearch(object):
         client = Elasticsearch()
         body = self.build_query_body(user_preferences)
         s = Search(using=client).index(index).from_dict(body)
-        res = s.execute()
+        count = s.count()
+        res = s[0:count].execute()
 
         print("Got %d Hits" % res['hits']['total'])
         for hit in res['hits']['hits']:

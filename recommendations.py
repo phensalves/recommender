@@ -16,6 +16,7 @@ class Recommendations(object):
             for user in common_users:
                 opts = {'id': user['_source']['id'], 'interests_ids': user['_source']['interests']}
                 similars.append(opts)
+        print("Common users size is: %s") % len(common_users)
         print("Similars size is: %s") % len(similars)
         return similars
 
