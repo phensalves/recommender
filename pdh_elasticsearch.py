@@ -39,10 +39,13 @@ class PdhElasticsearch(object):
         }
         return body
 
-    def get_elasticsearch_single_data(self, index_name, user_id):
-        result = Elasticsearch().get(index=index_name, doc_type=index_name, id=user_id)
-
-        if result is not None: return result['_source']
+    @staticmethod
+    def get_elasticsearch_single_data(index_name, user_id):
+        try:
+            result = Elasticsearch().get(index=index_name, doc_type=index_name, id=user_id)
+            return result['_source']
+        except TransportError:
+            return None
 
     def user_quality_ratings(self, user_id):
         try:

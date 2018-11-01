@@ -16,8 +16,14 @@ class Recommendations(object):
             for user in common_users:
                 opts = {'id': user['_source']['id'], 'interests_ids': user['_source']['interests']}
                 similars.append(opts)
-        print("Common users size is: %s") % len(common_users)
-        print("Similars size is: %s") % len(similars)
+            quality_ratings = []
+            for similar in similars:
+                res = es_conn.user_quality_ratings(similar['id'])
+                if res is not None: quality_ratings.append(res)
+        print("Similars are: %s") % len(similars)
+        print("Similar users ids: %s") % similars
+        print("Quality Ratings size is: %s") % len(quality_ratings)
+        print("Quality Ratings: %s") % quality_ratings
         return similars
 
     def load_common_users_quality_rating(self, user_id):
